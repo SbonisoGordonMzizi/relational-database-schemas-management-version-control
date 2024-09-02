@@ -41,11 +41,11 @@ Ensure you have the following installed:
    git clone git@github.com:SbonisoGordonMzizi/relational-database-schemas-management-version-control.git
    cd relational-database-schemas-management-version-control
 ```
-2. **Install PostgreSQL:** Follow the installation instructions for your operating system on the PostgreSQL Downloads page.
+2. **Install PostgreSQL:** Follow the installation instructions for your operating system on the [PostgreSQL Downloads page](https://www.postgresql.org/download).
 
-3. **Set up AWS CLI:** Configure AWS CLI with your credentials. For more details, see the AWS CLI Configuration guide.
+3. **Set up AWS CLI:** Configure AWS CLI with your credentials. For more details, see the [AWS CLI Configuration guide](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html).
 
-4. **Install Flyway:** Download and install Flyway from the Flyway Downloads page.
+4. **Install Flyway:** Download and install Flyway from the [Flyway Downloads page](https://www.red-gate.com/products/flyway/community/download).
 
 ## Database Schema Management
 ### Creating Schemas
