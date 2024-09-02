@@ -1,4 +1,4 @@
-# Relational Database Schemas, Management, and Version Control
+## Relational Database Schemas, Management, and Version Control
 This repository provides tools and guidelines for managing relational database schemas, handling database version control, and applying schema migrations using Flyway. It focuses on PostgreSQL and AWS-managed relational databases, including Amazon RDS and Amazon Aurora.
 
 ## Table of Contents
