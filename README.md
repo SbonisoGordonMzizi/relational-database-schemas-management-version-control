@@ -38,8 +38,8 @@ Ensure you have the following installed:
 1. **Clone the repository:**
 
 ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone git@github.com:SbonisoGordonMzizi/relational-database-schemas-management-version-control.git
+   cd relational-database-schemas-management-version-control
 ```
 2. **Install PostgreSQL:** Follow the installation instructions for your operating system on the PostgreSQL Downloads page.
 
