@@ -87,8 +87,8 @@ Ensure you have the following installed:
 ```
 
 ## Best Practices
-- **Version Control: Always commit your migration scripts to version control (e.g., Git).
-- **Automate Migrations: Integrate Flyway into your CI/CD pipeline for automated deployments.
-- **Test Migrations Locally: Before applying migrations in production, test them in a local or staging environment.
-- **Backup Databases: Regularly backup your databases to prevent data loss during migrations.
-- **Use Descriptive Names: Name your migration scripts descriptively to indicate their purpose (e.g., V2__Add_user_table.sql).
+- **Version Control:** Always commit your migration scripts to version control (e.g., Git).
+- **Automate Migrations:** Integrate Flyway into your CI/CD pipeline for automated deployments.
+- **Test Migrations Locally:** Before applying migrations in production, test them in a local or staging environment.
+- **Backup Databases:** Regularly backup your databases to prevent data loss during migrations.
+- **Use Descriptive Names:** Name your migration scripts descriptively to indicate their purpose (e.g., V2__Add_user_table.sql).
