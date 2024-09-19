@@ -132,9 +132,6 @@ INSERT INTO "public"."employees" VALUES (205,'Shelley','Higgins','shelley.higgin
 INSERT INTO "public"."employees" VALUES (206,'William','Gietz','william.gietz@company.com','515.123.8181','2020-10-01','AC_ACCOUNT','8300','0','205','110');
 COMMIT;
 
-ALTER TABLE "public"."employees" ADD PRIMARY KEY ("employee_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."employees" ADD CONSTRAINT "fk_employee_job_id" FOREIGN KEY ("job_id") REFERENCES "public"."jobs" ("job_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."employees" ADD CONSTRAINT "fk_employee_department_id" FOREIGN KEY ("department_id") REFERENCES "public"."departments" ("department_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
 
 -- ----------------------------
 --  Table : job_history
@@ -162,8 +159,7 @@ INSERT INTO "public"."job_history" VALUES (176,'1999-01-01','1999-12-31','SA_MAN
 INSERT INTO "public"."job_history" VALUES (200,'1994-07-01','2020-12-31','AC_ACCOUNT','90');
 COMMIT;
 
-ALTER TABLE "public"."job_history" ADD CONSTRAINT "fk_job_history_employee_id" FOREIGN KEY ("employee_id") REFERENCES "public"."employees" ("employee_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."job_history" ADD CONSTRAINT "fk_job_history_job_id" FOREIGN KEY ("job_id") REFERENCES "public"."jobs" ("job_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+
 
 
 -- ----------------------------
@@ -183,7 +179,7 @@ INSERT INTO "public"."regions" VALUES (3,'Asia');
 INSERT INTO "public"."regions" VALUES (4,'Middle East and Africa');
 COMMIT;
 
-ALTER TABLE "public"."regions" ADD PRIMARY KEY ("region_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
 
 -- ----------------------------
 --  Table : countries
@@ -224,8 +220,6 @@ INSERT INTO "public"."countries" VALUES ('ZM','Zambia','4');
 INSERT INTO "public"."countries" VALUES ('ZW','Zimbabwe','4');
 COMMIT;
 
-ALTER TABLE "public"."countries" ADD PRIMARY KEY ("country_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."countries" ADD CONSTRAINT "fk_country_region" FOREIGN KEY ("region_id") REFERENCES "public"."regions" ("region_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
 
 -- ----------------------------
 --  Table : locations
@@ -259,8 +253,7 @@ INSERT INTO "public"."locations" VALUES (2300,'198 Clementi North','540198','Sin
 INSERT INTO "public"."locations" VALUES (2400,'8204 Arthur St',null,'London',null,'UK');
 COMMIT;
 
-ALTER TABLE "public"."locations" ADD PRIMARY KEY ("location_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."locations" ADD CONSTRAINT "fk_location_country" FOREIGN KEY ("country_id") REFERENCES "public"."countries" ("country_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+
 
 -- ----------------------------
 --  Table : departments
@@ -304,8 +297,7 @@ INSERT INTO "public"."departments" VALUES (260,'Recruiting','0','1700');
 INSERT INTO "public"."departments" VALUES (270,'Payroll','0','1700');
 COMMIT;
 
-ALTER TABLE "public"."departments" ADD PRIMARY KEY ("department_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
-ALTER TABLE "public"."departments" ADD CONSTRAINT "fk_department_location" FOREIGN KEY ("location_id") REFERENCES "public"."locations" ("location_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+
 
 -- ----------------------------
 --  Table : jobs
@@ -342,4 +334,17 @@ INSERT INTO "public"."jobs" VALUES ('PR_REP','Public Relations Representative','
 COMMIT;
 
 ALTER TABLE "public"."jobs" ADD PRIMARY KEY ("job_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."employees" ADD PRIMARY KEY ("employee_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."regions" ADD PRIMARY KEY ("region_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."countries" ADD PRIMARY KEY ("country_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."locations" ADD PRIMARY KEY ("location_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."departments" ADD PRIMARY KEY ("department_id") NOT DEFERRABLE INITIALLY IMMEDIATE;
 
+
+ALTER TABLE "public"."employees" ADD CONSTRAINT "fk_employee_job_id" FOREIGN KEY ("job_id") REFERENCES "public"."jobs" ("job_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."employees" ADD CONSTRAINT "fk_employee_department_id" FOREIGN KEY ("department_id") REFERENCES "public"."departments" ("department_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."job_history" ADD CONSTRAINT "fk_job_history_employee_id" FOREIGN KEY ("employee_id") REFERENCES "public"."employees" ("employee_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."job_history" ADD CONSTRAINT "fk_job_history_job_id" FOREIGN KEY ("job_id") REFERENCES "public"."jobs" ("job_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."countries" ADD CONSTRAINT "fk_country_region" FOREIGN KEY ("region_id") REFERENCES "public"."regions" ("region_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."locations" ADD CONSTRAINT "fk_location_country" FOREIGN KEY ("country_id") REFERENCES "public"."countries" ("country_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
+ALTER TABLE "public"."departments" ADD CONSTRAINT "fk_department_location" FOREIGN KEY ("location_id") REFERENCES "public"."locations" ("location_id") ON UPDATE NO ACTION ON DELETE NO ACTION NOT DEFERRABLE INITIALLY IMMEDIATE;
